@@ -11,37 +11,16 @@ def data_collection():
     Return: The function returns a list of dataframes    
     """
     dfs = []
-    directory = r"C:\Users\admin\Desktop\on-going-projects\HealthDash-Pro\dataset"
+    directory = r"C:\Users\ernes\Downloads\HealthDash-Pro\dataset"
     for filename in os.listdir(directory):
         if filename.endswith('.csv'):
-            file_source = filename.plit('.')[0].trim()
+            file_source = filename.split('.')[0]
             filepath = os.path.join(directory, filename)
             df = pd.read_csv(filepath)
             df['file_source'] = file_source
             dfs.append(df)
     return dfs
-
-
-def data_format_standardizer():
-    """
-    Description:
-
-    Args:
-
-    Return:
-    """
-    df_lists = data_collection
-
-    for df in df_lists:
-         if (df['col'] == Year):
-             
-
-
-
-
-
-
-
+df_lists = data_collection()
 cause_of_deaths_df = df_lists[0]
 diabetes_1_df = df_lists[1]
 diabetes_2_df = df_lists[2]
